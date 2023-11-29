@@ -7,8 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class RedBus {
 
 	public static void main(String[] args) throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver","C:\\Automation\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
-	       WebDriver driver=new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Automation\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://www.redbus.in/");
 
