@@ -19,8 +19,8 @@ public class SynchronizationAssignment {
 		driver.findElement(By.id("username")).sendKeys("rahulshettyacademy");
 		driver.findElement(By.cssSelector("#password")).sendKeys("learning");
 		driver.findElement(By.xpath("//label[2]//span[2]")).click();
-		//driver.switchTo().alert().accept();
 		driver.switchTo().alert().accept();
+		//driver.switchTo().alert().dismiss();
 	
 		System.out.println(driver.switchTo().alert().getText());
 	

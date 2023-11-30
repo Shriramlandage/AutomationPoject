@@ -18,7 +18,7 @@ public class AddtoCartFuntionality {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
+
 		String[] itemsNeeded = { "Cucumber", "Brocolli", "Tomato", "Grapes" };
 
 		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
@@ -31,7 +31,7 @@ public class AddtoCartFuntionality {
 			String formattedName = name[0].trim();
 
 			// format it to get actul vagetable name
-			// check whether name you extracredis present in array or not -
+			// check whether name you extracredis present in array or not
 			// Convert array into array list for easy search
 
 			List itemsNeededList = Arrays.asList(itemsNeeded);
@@ -44,28 +44,29 @@ public class AddtoCartFuntionality {
 				if (j == 4) {
 					break;
 				}
-				
 			}
-		}driver.findElement(By.cssSelector("img[alt='Cart']")).click();
+		}
+		driver.findElement(By.cssSelector("img[alt='Cart']")).click();
 		driver.findElement(By.xpath("//button[normalize-space()='PROCEED TO CHECKOUT']")).click();
 		driver.findElement(By.cssSelector("input[placeholder='Enter promo code']")).sendKeys("rahulshettyacademy");
 		driver.findElement(By.xpath("//button[normalize-space()='Apply']")).click();
 		System.out.println(driver.findElement(By.xpath("//span[@class='promoInfo']")).getText());
 		driver.findElement(By.xpath("//button[normalize-space()='Place Order']")).click();
-		
-		 WebElement dropdownElement = driver.findElement(By.xpath("//div[@class='wrapperTwo']//div//select"));
-		 Select dropdown = new Select(dropdownElement);
-		 dropdown.selectByVisibleText("India");
-		 driver.findElement(By.className("chkAgree")).click();
-		 driver.findElement(By.cssSelector("div[class='wrapperTwo'] button")).click();		 
-		 WebElement thankYouMessageElement = driver.findElement(By.xpath("//span[contains(text(),'Thank you, your order has been placed successfully')]")); // Replace with the actual ID
 
-	        // Check if the "Thank you" message is displayed
-	        if (thankYouMessageElement.isDisplayed()) {
-	            System.out.println("Thank you message is displayed!");
-	        } else {
-	            System.out.println("Thank you message is not displayed!");
-	        }
-	        driver.close();
+		WebElement dropdownElement = driver.findElement(By.xpath("//div[@class='wrapperTwo']//div//select"));
+		Select dropdown = new Select(dropdownElement);
+		dropdown.selectByVisibleText("India");
+		driver.findElement(By.className("chkAgree")).click();
+		driver.findElement(By.cssSelector("div[class='wrapperTwo'] button")).click();
+		WebElement thankYouMessageElement = driver
+				.findElement(By.xpath("//span[contains(text(),'Thank you, your order has been placed successfully')]")); 
+		
+		// Check if the "Thank you" message is displayed
+		if (thankYouMessageElement.isDisplayed()) {
+			System.out.println("Thank you message is displayed!");
+		} else {
+			System.out.println("Thank you message is not displayed!");
+		}
+		driver.close();
 	}
 }

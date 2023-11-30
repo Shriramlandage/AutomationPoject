@@ -104,6 +104,6 @@ public class SwagLabAutomation {
 				System.out.println("Unexpected redirection. Exiting the program.");
 			}
 
-		} // driver.close();
+		}  driver.close();
 	}
 }
