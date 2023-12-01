@@ -3,9 +3,12 @@ package detaDriven;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.util.NumberToTextConverter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -49,21 +52,28 @@ public class DrivenData {
 						while (rows.hasNext()) 
 						{
 							Row r=rows.next();
-							if (r.getCell(coloumn).getStringCellValue().equalsIgnoreCase("Purchase")) 
+							if (r.getCell(coloumn).getStringCellValue().equalsIgnoreCase(testcaseName)) 
 							{
 							//after you grab purchase testcase row = pull all the data of that row and feed into test
 							java.util.Iterator<Cell> cv=r.cellIterator();
 								while(cv.hasNext()) 
 								{
-								a.add(cv.next().getStringCellValue());
-								}
+									Cell c = cv.next();
+									if (c.getCellType() == CellType.STRING) {
+
+										a.add(c.getStringCellValue());
+									} else {
+
+										a.add(NumberToTextConverter.toText(c.getNumericCellValue()));
+
+									}
 							}
 
 						}
 
 					}
 
-				}
+				}}
 				return a;
 
 			}

@@ -19,6 +19,7 @@ public class dataDriven {
 //once coloumn is identified then scan entire testcase coloum to identify purcjhase testcase row
 //after you grab purchase testcase row = pull all the data of that row and feed into test
 
+	@SuppressWarnings("deprecation")
 	public ArrayList<String> getData(String testcaseName) throws IOException {
 //fileInputStream argument
 		ArrayList<String> a = new ArrayList<String>();
