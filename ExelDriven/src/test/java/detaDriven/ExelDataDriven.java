@@ -17,7 +17,7 @@ public class ExelDataDriven {
 	// Pnce coloun is indentified then scan entire testcase coloum to identify
 	// purchase testcase row
 	// after you grab purchase testcase row=pull all the data of that row and feed
-	// into test
+	
 
 	public static void main(String[] args) throws IOException {
 
@@ -64,12 +64,8 @@ public class ExelDataDriven {
 						a.add(cv.next().getStringCellValue());
 						}
 					}
-
 				}
-
 			}
-
 		}
-
 	}
 }
