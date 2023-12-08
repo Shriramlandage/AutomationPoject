@@ -60,7 +60,6 @@ public class DrivenData {
 							} else {
 
 								a.add(NumberToTextConverter.toText(c.getNumericCellValue()));
-
 							}
 						}
 					}

@@ -2,6 +2,7 @@ package testing;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,75 +10,77 @@ import java.util.Iterator;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.NumberToTextConverter;
+import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 public class dataDriven {
 
-//Identify Testcases coloum by scanning the entire 1st row
-//once coloumn is identified then scan entire testcase coloum to identify purcjhase testcase row
-//after you grab purchase testcase row = pull all the data of that row and feed into test
+	 private WebDriver driver;
+	    private Workbook workbook;
+	    private Sheet sheet;
+	    private int rowNum = 0;
 
-	@SuppressWarnings("deprecation")
-	public ArrayList<String> getData(String testcaseName) throws IOException {
-//fileInputStream argument
-		ArrayList<String> a = new ArrayList<String>();
+	    @BeforeTest
+	    public void setUp() {
+	        // Set the path to the chromedriver executable
+	    	System.setProperty("webdriver.chrome.driver",
+					"C:\\Automation\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
 
-		FileInputStream fis = new FileInputStream("C:\\\\Users\\\\ShriramLandage\\\\Downloads\\\\Book1.xlsx");
-		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+	        // Initialize ChromeDriver
+	     WebDriver   driver = new ChromeDriver();
 
-		int sheets = workbook.getNumberOfSheets();
-		for (int i = 0; i < sheets; i++) {
-			if (workbook.getSheetName(i).equalsIgnoreCase("testdata")) {
-				XSSFSheet sheet = workbook.getSheetAt(i);
-//Identify Testcases coloum by scanning the entire 1st row
+	        // Initialize Excel workbook and sheet
+	        workbook = new XSSFWorkbook();
+	        sheet = workbook.createSheet("TestResults");
+	    }
 
-				Iterator<Row> rows = sheet.iterator();// sheet is collection of rows
-				Row firstrow = rows.next();
-				Iterator<Cell> ce = firstrow.cellIterator();// row is collection of cells
-				int k = 0;
-				int coloumn = 0;
-				while (ce.hasNext()) {
-					Cell value = ce.next();
+	    @Test
+	    public void verifyTitle() {
+	        // Navigate to the web page
 
-					if (value.getStringCellValue().equalsIgnoreCase("TestCases")) {
-						coloumn = k;
+	    	driver.get("https://www.saucedemo.com/v1/");
+	        // Get the actual title
+	        String actualTitle = driver.getTitle();
 
-					}
+	        // Define the expected title
+	        String expectedTitle = "https://www.saucedemo.com/v1/";
 
-					k++;
-				}
-				System.out.println(coloumn);
+	        // Compare actual and expected titles
+	        boolean testResult = actualTitle.equals(expectedTitle);
 
-////once coloumn is identified then scan entire testcase coloum to identify purcjhase testcase row
-				while (rows.hasNext()) {
+	        // Write test results to Excel
+	        writeTestResultToExcel("verifyTitle", testResult);
+	    }
 
-					Row r = rows.next();
+	    @AfterTest
+	    public void tearDown() {
+	        // Close the browser
+	        if (driver != null) {
+	            driver.quit();
 
-					if (r.getCell(coloumn).getStringCellValue().equalsIgnoreCase(testcaseName)) {
+	            // Save Excel file
+	            try (FileOutputStream fileOut = new FileOutputStream(new String("C:\\Users\\ShriramLandage\\Downloads\\Testing.xlsx")))
+	            {
+	                workbook.write(fileOut);
+	            }
+	            catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
 
-////after you grab purchase testcase row = pull all the data of that row and feed into test
-
-						Iterator<Cell> cv = r.cellIterator();
-						while (cv.hasNext()) {
-							Cell c = cv.next();
-							if (c.getCellTypeEnum() == CellType.STRING) {
-
-								a.add(c.getStringCellValue());
-							} else {
-
-								a.add(NumberToTextConverter.toText(c.getNumericCellValue()));
-
-							}
-						}
-					}
-
-				}
-
-			}
-		}
-		return a;
-
+	    private void writeTestResultToExcel(String testName, boolean testResult) {
+	        Row row = sheet.createRow(rowNum++);
+	        row.createCell(0).setCellValue(testName);
+	        row.createCell(1).setCellValue(testResult ? "Pass" : "Fail");
+	    }
 	}
-}
