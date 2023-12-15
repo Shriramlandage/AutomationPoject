@@ -1,6 +1,5 @@
 package testing;
 
-
 import java.time.Duration;
 import java.util.List;
 
@@ -11,9 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-
-
 
 public class SynchronizationAssignment {
 
@@ -26,9 +22,10 @@ public class SynchronizationAssignment {
 		driver.findElement(By.id("password")).sendKeys("learning");
 		driver.findElement(By.cssSelector(".customradio:nth-child(2)")).click();
 
-		//Thread.sleep(3000);
+		// Thread.sleep(3000);
 
-		WebDriverWait wait = new WebDriverWait(driver,10);;
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("okayBtn")));
 		driver.findElement(By.id("okayBtn")).click();
 
@@ -41,17 +38,17 @@ public class SynchronizationAssignment {
 		driver.findElement(By.id("signInBtn")).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Checkout")));
 
-		List <WebElement> products = driver.findElements(By.cssSelector(".card-footer .btn-info"));
+		List<WebElement> products = driver.findElements(By.cssSelector(".card-footer .btn-info"));
 
-		for(int i =0;i<products.size();i++)
+		for (int i = 0; i < products.size(); i++)
 
 		{
 
-		products.get(i).click();
+			products.get(i).click();
 
 		}
 		driver.findElement(By.partialLinkText("Checkout")).click();
 		driver.close();
-	
+
 	}
-		}
+}

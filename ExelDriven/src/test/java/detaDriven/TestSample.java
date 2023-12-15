@@ -12,7 +12,7 @@ public class TestSample {
 		
 		
 		DrivenData d=new DrivenData();
-		ArrayList<String> data=d.getData("Add Profile");
+		ArrayList<String> data=d.getData("Delete profile");
 		System.out.println(data.get(0));
 		System.out.println(data.get(1));
 		System.out.println(data.get(2));

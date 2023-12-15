@@ -34,7 +34,6 @@ public class Swaglab {
 		Workbook workbook = new XSSFWorkbook(fileInputStream);
 		Sheet sheet = workbook.getSheetAt(0);
 
-		
 		for (int i = 1; i <= sheet.getLastRowNum(); i++) {
 			Row row = sheet.getRow(i);
 			String username = row.getCell(0).getStringCellValue();
@@ -50,9 +49,8 @@ public class Swaglab {
 
 			loginButton.click();
 			System.out.println(driver.getTitle());
-		
+
 			driver.findElement(By.xpath("//button[text()= 'ADD TO CART']")).click();
-			
 
 			driver.findElement(By.xpath("//a[@class='shopping_cart_link fa-layers fa-fw']//*[name()='svg']")).click();
 			System.out.println(driver.getTitle());
@@ -88,18 +86,18 @@ public class Swaglab {
 				driver.findElement(By.xpath("//a[normalize-space()='FINISH']")).click();
 				System.out.println(driver.getTitle());
 
-			} 
-			
-			if (driver.getTitle().equals("Swag Labs")) {
-		        System.out.println("Successfully completed the process.");
-		        break;
-		    } else {
-		        System.out.println("Unexpected redirection. Exiting the program.");
-		    } 
+			}
 
-		}	
-		
+			if (driver.getTitle().equals("Swag Labs")) {
+				System.out.println("Successfully completed the process.");
+				break;
+			} else {
+				System.out.println("Unexpected redirection. Exiting the program.");
+			}
+
+		}
+
 		driver.quit();
 
-			}
 	}
+}

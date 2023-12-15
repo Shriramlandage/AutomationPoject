@@ -59,8 +59,8 @@ public class AddtoCartFuntionality {
 		driver.findElement(By.className("chkAgree")).click();
 		driver.findElement(By.cssSelector("div[class='wrapperTwo'] button")).click();
 		WebElement thankYouMessageElement = driver
-				.findElement(By.xpath("//span[contains(text(),'Thank you, your order has been placed successfully')]")); 
-		
+				.findElement(By.xpath("//span[contains(text(),'Thank you, your order has been placed successfully')]"));
+
 		// Check if the "Thank you" message is displayed
 		if (thankYouMessageElement.isDisplayed()) {
 			System.out.println("Thank you message is displayed!");

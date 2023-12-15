@@ -18,18 +18,18 @@ public class Link_Count {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://theccat.ca");
+		driver.get("https://dynaleccontrols.com/");
 		System.out.println(driver.findElements(By.tagName("a")).size());
 
-		WebElement footerdriver = driver.findElement(By.xpath("//footer[@class='sitemap']"));
-		System.out.println(footerdriver.findElements(By.tagName("a")).size());
-		WebElement coloumdriver = footerdriver.findElement(By.xpath("//div[@class='col-sm-6'][1]"));
-		System.out.println(coloumdriver.findElements(By.tagName("a")).size());
+//		WebElement footerdriver = driver.findElement(By.xpath("//footer[@class='sitemap']"));
+//		System.out.println(footerdriver.findElements(By.tagName("a")).size());
+//		WebElement coloumdriver = footerdriver.findElement(By.xpath("//div[@class='col-sm-6'][1]"));
+//		System.out.println(coloumdriver.findElements(By.tagName("a")).size());
 
-		for (int i = 0; i < coloumdriver.findElements(By.tagName("a")).size(); i++) {
+		for (int i = 0; i < driver.findElements(By.tagName("a")).size(); i++) {
 
 			String clickonlinksTab = Keys.chord(Keys.CONTROL, Keys.ENTER);
-			coloumdriver.findElements(By.tagName("a")).get(i).sendKeys(clickonlinksTab);
+			driver.findElements(By.tagName("a")).get(i).sendKeys(clickonlinksTab);
 			Thread.sleep(2000);
 		}
 		Set<String> abc = driver.getWindowHandles();
@@ -41,6 +41,6 @@ public class Link_Count {
 
 		}
 
-	}
+}
 
 }
