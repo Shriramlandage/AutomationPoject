@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Loon Department">
+	
+	
+	
+	
+	<test thread-count="5" name="personal loon">
+		<classes>
+			<class name="pacticeTestNg.Day1" />
+			<methods>
+				<include name="Demo" />
+			</methods>
+
+			<class name="pacticeTestNg.Day2" />
+			<class name="pacticeTestNg.Day4" />
+		</classes>
+	</test>
+	
+	
+	
+	<test name="Car Loan">
+		<classes>
+			<!--			  If user dont want to execute perticular test case that time-->
+			<!--			user.		-->
+			<class name="pacticeTestNg.Day3" />
+			<methods>
+				<exclude name="MobileloginCarLoan" />
+			</methods>
+
+		</classes>
+	</test> <!--
+	Test -->
+</suite> <!--
+Suite -->

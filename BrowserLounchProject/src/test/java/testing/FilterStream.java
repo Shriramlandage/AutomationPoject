@@ -34,12 +34,12 @@ public class FilterStream {
 		List<WebElement> veggies = driver.findElements(By.xpath("//tr/td[1]"));
 		
 		//1 results
-		List<WebElement> filteredList=veggies.stream().filter(veggie->veggie.getText().contains("Tomato"))
+		List<Object> filteredList=veggies.stream().filter(veggie->veggie.getText().contains("Tomato"))
 				.collect(Collectors.toList());
 
 		Assert.assertEquals(veggies.size(), filteredList.size());
 		
-		System.out.println(filteredList);
+		
 		
 		
 		

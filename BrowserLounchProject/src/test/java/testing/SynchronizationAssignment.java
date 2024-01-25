@@ -24,7 +24,8 @@ public class SynchronizationAssignment {
 
 		// Thread.sleep(3000);
 
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver,10);
+
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("okayBtn")));
 		driver.findElement(By.id("okayBtn")).click();
