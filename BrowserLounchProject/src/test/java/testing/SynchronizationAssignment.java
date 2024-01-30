@@ -17,6 +17,7 @@ public class SynchronizationAssignment {
 		System.setProperty("webdriver.chrome.driver",
 				"C:\\Automation\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		driver.get("https://rahulshettyacademy.com/loginpagePractise/");
 		driver.findElement(By.name("username")).sendKeys("rahulshettyacademy");
 		driver.findElement(By.id("password")).sendKeys("learning");
@@ -24,9 +25,8 @@ public class SynchronizationAssignment {
 
 		// Thread.sleep(3000);
 
-        WebDriverWait wait = new WebDriverWait(driver,10);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("okayBtn")));
 		driver.findElement(By.id("okayBtn")).click();
 

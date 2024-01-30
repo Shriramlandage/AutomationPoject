@@ -4,9 +4,8 @@ import org.testng.annotations.Test;
 
 public class PS {
 
-	@Test
-	
+	@Test	
 	public void doThis() {
-		System.out.println("Hey hi my name ");
+		System.out.println("Hey hi I am shriram ");
 	}
 }

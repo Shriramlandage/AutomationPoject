@@ -1,10 +1,13 @@
 package pacticeTestNg;
 
-public class PS2 {
+public class PS2 extends PS3{
 	
 	int a;
+	
+	//Default constructor
 	public PS2 (int a)
 	{
+		super(a);
 		this.a=a;
 	}
 // Default costructor
