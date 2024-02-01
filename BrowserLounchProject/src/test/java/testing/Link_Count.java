@@ -18,7 +18,7 @@ public class Link_Count {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://dynaleccontrols.com/");
+		driver.get("https://threegates.ie/");
 		System.out.println(driver.findElements(By.tagName("a")).size());
 
 //		WebElement footerdriver = driver.findElement(By.xpath("//footer[@class='sitemap']"));

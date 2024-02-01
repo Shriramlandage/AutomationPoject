@@ -1,9 +1,10 @@
-package ShriramAcademy;
+package ShriramAcademy.Tests;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
+import ShriramAcademy.TestComponents.BaseTest;
 import ShriramAcademy.pageobject.CartPage;
 import ShriramAcademy.pageobject.CheckOutPage;
 import ShriramAcademy.pageobject.ConfirmationPage;
@@ -20,19 +24,15 @@ import ShriramAcademy.pageobject.LandingPage;
 import ShriramAcademy.pageobject.ProductCatalogue;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class SubmitOrderTest {
+public class SubmitOrderTest extends BaseTest {
 
-	public static void main(String[] args) throws InterruptedException {
+	@Test
+	public void submitOrder() throws IOException, InterruptedException {
 
 		String productName = "IPHONE 13 PRO";
 
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		LandingPage landingPage = launchApplication();
 
-		LandingPage landingPage = new LandingPage(driver);
-		landingPage.goTo();
 		ProductCatalogue porduCatalogue = landingPage.loginApplication("webelement@yopmail.com", "India@123");
 
 		List<WebElement> products = porduCatalogue.getProductList();
