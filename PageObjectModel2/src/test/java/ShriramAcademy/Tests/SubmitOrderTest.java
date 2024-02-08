@@ -30,11 +30,7 @@ public class SubmitOrderTest extends BaseTest {
 	public void submitOrder() throws IOException, InterruptedException {
 
 		String productName = "IPHONE 13 PRO";
-
-		LandingPage landingPage = launchApplication();
-
 		ProductCatalogue porduCatalogue = landingPage.loginApplication("webelement@yopmail.com", "India@123");
-
 		List<WebElement> products = porduCatalogue.getProductList();
 		porduCatalogue.addProductToCart(productName);
 		CartPage cartPage = porduCatalogue.goTocartPage();
@@ -53,7 +49,6 @@ public class SubmitOrderTest extends BaseTest {
 		String confirmMessage = confirmationPage.verifyConfirmationMessage();
 		Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
 
-		driver.close();
-
+		
 	}
 }
