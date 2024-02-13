@@ -1,5 +1,6 @@
 package testing;
 
+import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -9,17 +10,21 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class Link_Count {
 
 	public static void main(String[] args) throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver",
-				"C:\\Automation\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+
+		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
-		driver.get("https://interviewskillscoach.co.uk");
-		System.out.println(driver.findElements(By.tagName("a")).size());
+		driver.get("https://eztravelpad.com/");
+		System.out.println(driver.findElements(By.tagName("a")).size()); 
 
 //		WebElement footerdriver = driver.findElement(By.xpath("//footer[@class='sitemap']"));
 //		System.out.println(footerdriver.findElements(By.tagName("a")).size());
