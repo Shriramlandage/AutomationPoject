@@ -21,9 +21,9 @@ public class Link_Count {
 
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
-		driver.get("https://eztravelpad.com/");
+		driver.get("https://www.iansanderson.co.uk/contactus.php?page=contactus");
 		System.out.println(driver.findElements(By.tagName("a")).size()); 
 
 //		WebElement footerdriver = driver.findElement(By.xpath("//footer[@class='sitemap']"));

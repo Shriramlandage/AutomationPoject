@@ -1,4 +1,4 @@
-package ShriramAcademy.pageobject;
+ package ShriramAcademy.pageobject;
 
 import java.util.List;
 
@@ -35,6 +35,5 @@ public class CartPage extends AbstractComponent {
 		checkoutEle.click();
 		return new CheckOutPage(driver);
 
-	}
-
-}
+	      }
+       }

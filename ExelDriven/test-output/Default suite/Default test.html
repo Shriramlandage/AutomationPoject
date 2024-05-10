@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Feb 02 17:47:05 IST 2024</td>
+<td>Started on:</td><td>Fri May 10 12:06:42 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (98 ms)</td>
+<tr><td>Total time:</td><td>1 seconds (1193 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,15 +76,16 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='detaDriven.DetaProviderTestNG.testcaseData()'><b>testcaseData</b><br>Test class: detaDriven.DetaProviderTestNG</td>
-<td><div><pre>org.testng.TestNGException: 
-Method public void detaDriven.DetaProviderTestNG.testcaseData(java.lang.String,java.lang.String,int) requires a @DataProvider named : driverTest
-	at org.testng.internal.Parameters.findDataProvider(Parameters.java:526)
-	at org.testng.internal.Parameters.handleParameters(Parameters.java:763)
-	at org.testng.internal.Parameters.handleParameters(Parameters.java:728)
-	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72)
-	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:924)
+<td title='detaDriven.dataProvide.testCaseData()'><b>testCaseData</b><br>Test class: detaDriven.dataProvide</td>
+<td><div><pre>org.testng.internal.reflect.MethodMatcherException: 
+[public void detaDriven.dataProvide.testCaseData(java.lang.String,java.lang.String,java.lang.String)] has no parameters defined but was found to be using a data provider (either explicitly specified or inherited from class level annotation).
+Data provider mismatch
+Method: testCaseData([java.lang.String arg0, java.lang.String arg1, java.lang.String arg2])
+Arguments: [(java.lang.String) Login,(java.lang.String) asdf,(java.lang.String) dsf,(java.lang.String) fbdac]
+	at org.testng.internal.reflect.DataProviderMethodMatcher.getConformingArguments(DataProviderMethodMatcher.java:46)
+	at org.testng.internal.Parameters.injectParameters(Parameters.java:909)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:37)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
 	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
 	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
 	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
@@ -102,17 +103,18 @@ Method public void detaDriven.DetaProviderTestNG.testcaseData(java.lang.String,j
 	at org.testng.TestNG.runSuites(TestNG.java:1099)
 	at org.testng.TestNG.run(TestNG.java:1067)
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace477376212", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace477376212'><pre>org.testng.TestNGException: 
-Method public void detaDriven.DetaProviderTestNG.testcaseData(java.lang.String,java.lang.String,int) requires a @DataProvider named : driverTest
-	at org.testng.internal.Parameters.findDataProvider(Parameters.java:526)
-	at org.testng.internal.Parameters.handleParameters(Parameters.java:763)
-	at org.testng.internal.Parameters.handleParameters(Parameters.java:728)
-	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72)
-	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:924)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div><a href='#' onClick='toggleBox("stack-trace883678948", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace883678948'><pre>org.testng.internal.reflect.MethodMatcherException: 
+[public void detaDriven.dataProvide.testCaseData(java.lang.String,java.lang.String,java.lang.String)] has no parameters defined but was found to be using a data provider (either explicitly specified or inherited from class level annotation).
+Data provider mismatch
+Method: testCaseData([java.lang.String arg0, java.lang.String arg1, java.lang.String arg2])
+Arguments: [(java.lang.String) Login,(java.lang.String) asdf,(java.lang.String) dsf,(java.lang.String) fbdac]
+	at org.testng.internal.reflect.DataProviderMethodMatcher.getConformingArguments(DataProviderMethodMatcher.java:46)
+	at org.testng.internal.Parameters.injectParameters(Parameters.java:909)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:37)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
 	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
 	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
 	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
@@ -130,11 +132,11 @@ Method public void detaDriven.DetaProviderTestNG.testcaseData(java.lang.String,j
 	at org.testng.TestNG.runSuites(TestNG.java:1099)
 	at org.testng.TestNG.run(TestNG.java:1067)
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>0</td>
-<td>detaDriven.DetaProviderTestNG@6340e5f0</td></tr>
+<td>1</td>
+<td>detaDriven.dataProvide@7bd7d6d6</td></tr>
 </table><p>
 </body>
 </html>

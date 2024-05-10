@@ -4,20 +4,18 @@ package detaDriven;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import net.bytebuddy.asm.Advice.Return;
-
 public class DetaProviderTestNG {
 	
 	@Test(dataProvider="driverTest")
-	public void testcaseData(String greeting,String communication, int id)
+	public void testCaseData(String greeting,String communication, int id)
 	{
 		System.out.println(greeting+communication+id);
 	}
 
-	@DataProvider(name="driveTest")
+	@DataProvider(name="driverTest")
 	public Object[][] getData()
 	{
-	 Object[][] data= {{"hello", "text", 123}, {"testing","providngdata",987},{"solo","call",7362}};
+	 Object[][] data= {{"hello", "text", 32}, {"testing","providngdata",342},{"solo","call",4342}};
 	return data;
 	
 	}

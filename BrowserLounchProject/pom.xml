@@ -31,10 +31,20 @@
 			<version>7.7.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>5.6.3</version>
+		</dependency>
 
 		<dependency>
-			<groupId>BrowserLounchProject</groupId>
-			<artifactId>BrowserLounchProject</artifactId>
+			<groupId>ShriramAcademy</groupId>
+			<artifactId>MavenProject</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>CucumberAutomationProject</groupId>
+			<artifactId>CucumberAutomationProject</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
