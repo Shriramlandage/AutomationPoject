@@ -20,7 +20,7 @@ public class LocatorsLetestFeature {
 		System.out.println(with driver.findElement(By.tagName("label"))).above(nameEditBox)).getText());
 		WebElement dateofBirth = driver.findElement(By.cssSelector("[for='dateofBirth']"));
 		driver.findElement(with(By.tagName("input")).below(dateofBirth)).click();
-		WebElement iceCreamLabel = driver
+		WebElement iceCreamLabel = driver 
 				.findElement(By.xpath("//label[text()='Check me out if you Love IceCreams!']"));
 		driver.findElement(with(By.tagName("input")).toLeftOf(iceCreamLabel)).click();
 		WebElement rdb = driver.findElement(By.id("inlineRadio1"));

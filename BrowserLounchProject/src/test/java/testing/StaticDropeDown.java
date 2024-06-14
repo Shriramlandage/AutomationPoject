@@ -10,11 +10,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.internal.thread.ThreadTimeoutException;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class StaticDropeDown {
 
 	public static void main(String[] args) throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver",
-				"C:\\Automation\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 
 		driver.manage().window().maximize();
@@ -27,7 +28,7 @@ public class StaticDropeDown {
 		// Click On From Box
 		driver.findElement(By.xpath("//input[@id='ctl00_mainContent_ddl_originStation1_CTXT']")).click();
 		Thread.sleep(3000);
-
+ 
 		// Select From city
 		driver.findElement(
 				By.xpath("//div[@id='glsctl00_mainContent_ddl_originStation1_CTNR']//a[contains(text(),'Pune (PNQ)')]"))
@@ -56,7 +57,8 @@ public class StaticDropeDown {
 		dropdown.selectByIndex(7);
 
 		/*
-		 * Below Code is updated new site Code. int i=1; while(i<2) {
+		 * Below Code is updated new site Code.
+		 *  int i=1; while(i<2) {
 		 * driver.findElement(By.xpath("//div[@data-testid='Adult-testID-plus-one-cta']"
 		 * )).click(); i++; } System.out.println(driver.findElement(By.xpath(
 		 * "//div[@data-testid='Adult-testID-plus-one-cta']")).getText());

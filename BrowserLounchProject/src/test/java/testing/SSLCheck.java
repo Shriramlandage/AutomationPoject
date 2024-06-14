@@ -20,7 +20,7 @@ public class SSLCheck {
 		
 		driver.get("https://expired.badssl.com/");
 		System.out.println(driver.getTitle());
-		driver.close();
+		driver.close(); 
 		
 	}
 }

@@ -7,11 +7,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class AutocompleteDropdownAssignment {
 	
 	public static void main(String[] args) throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver",
-				"C:\\Automation\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+	WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 

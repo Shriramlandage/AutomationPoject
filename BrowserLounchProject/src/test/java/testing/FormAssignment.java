@@ -28,7 +28,7 @@ public class FormAssignment {
 		driver.findElement(By.cssSelector("#exampleFormControlSelect1")).click();
 		driver.findElement(By.xpath("//option[normalize-space()='Male']")).click();
 		System.out.println(driver.findElement(By.xpath("//option[normalize-space()='Male']")).isSelected());
-		Thread.sleep(2000);
+		Thread.sleep(2000); 
 		WebElement dropdown = driver.findElement(By.id("exampleFormControlSelect1"));
 
 		Select abc = new Select(dropdown);

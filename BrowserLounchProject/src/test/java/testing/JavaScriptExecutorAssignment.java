@@ -9,11 +9,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class JavaScriptExecutorAssignment {
 	
 	public static void main(String[] args) throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver",
-				"C:\\Automation\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver",
+			//"C:\\Automation\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -23,7 +26,7 @@ public class JavaScriptExecutorAssignment {
 		// Scroll Web Page
 		js.executeScript("window.scrollBy(0,500)");
 		Thread.sleep(2000);
-		
+		 
 		WebElement table = driver.findElement(By.id("product"));
 
 		System.out.println(table.findElements(By.tagName("tr")).size());

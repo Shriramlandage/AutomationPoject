@@ -29,7 +29,7 @@ public class SwagLabAutomation {
 		Sheet sheet = workbook.getSheetAt(0);
 		for (int i = 1; i <= sheet.getLastRowNum(); i++) {
 			Row row = sheet.getRow(i);
-			String username = row.getCell(0).getStringCellValue();
+			String username = row.getCell(0).getStringCellValue(); 
 			String password = row.getCell(1).getStringCellValue();
 
 			driver.get("https://www.saucedemo.com/v1/");

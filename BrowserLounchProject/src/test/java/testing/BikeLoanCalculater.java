@@ -6,9 +6,9 @@ public class BikeLoanCalculater {
 
 	public static void main(String[] args) {
 		// Bike details
-		double bikePrice = 91995;
+		double bikePrice = 96000;
 		double downPayment = 30000;
-		double annualInterestRate = 8;
+		double annualInterestRate = 14.99;
 		int loanTenureMonths = 18;
 		
 

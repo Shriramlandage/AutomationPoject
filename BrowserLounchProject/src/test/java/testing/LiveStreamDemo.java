@@ -12,12 +12,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class LiveStreamDemo {
 
 	public static void main(String[] args) {
 
-		System.setProperty("webdriver.chrome.driver",
-				"C:\\Automation\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 
@@ -31,7 +32,7 @@ public class LiveStreamDemo {
 		String ChildID = it.next();
 		driver.switchTo().window(ChildID);
 
-		// Click on column
+		// Click on column 
 		driver.findElement(By.xpath("//tr/th[1]")).click();
 
 		// Capture text of all webelements into list

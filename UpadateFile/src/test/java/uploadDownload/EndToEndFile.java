@@ -3,10 +3,14 @@ package uploadDownload;
 import static org.testng.Assert.assertEquals;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -23,31 +27,29 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class EndToEndFile {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
-		
-		String fruitName = "Banana";
-		String fileName = "C:\\Users\\ShriramLandage\\Downloads\\download.xlsx";
-		
+		String fruitName = "Apple";
+		String updatedValue = "900";
+		String fileName = "C:\\Users\\ShriramLandage\\Downloads\\download (3).xlsx";
+
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
 
-		
-
 		driver.get("https://rahulshettyacademy.com/upload-download-test/");
 		// Download FIle
 		driver.findElement(By.cssSelector("#downloadButton")).click();
 
-		//Edit ecel - getColumnNumber of Price -getRownumber of  Apple -> update excel with row, col
-		int col =getColumnNumber(fileName,"price");
-		int row =getRowNumber(fileName,"Apple");
-		updateCell(fileName,row,col,"599");
-		
+		// Edit ecel - getColumnNumber of Price -getRownumber of Apple -> update excel
+		// with row, col
+		int col = getColumnNumber(fileName, "price");
+		int row = getRowNumber(fileName, "Apple");
+		Assert.assertTrue(updateCell(fileName, row, col, updatedValue));
 		// Upload File
 		WebElement upload = driver.findElement(By.xpath("//input[@id='fileinput']"));
-		upload.sendKeys("C:\\Users\\ShriramLandage\\Downloads\\download.xlsx");
+		upload.sendKeys("C:\\Users\\ShriramLandage\\Downloads\\download (3).xlsx");
 
 		// wait for success message to sho up and wait for disapper
 		By toastLocator = By.cssSelector("div[role='alert'] div:nth-child(2)");
@@ -56,55 +58,102 @@ public class EndToEndFile {
 
 		String toastText = driver.findElement(toastLocator).getText();
 		System.out.println(toastText);
-		Assert.assertEquals("Updated Excel Data Successfully.", toastText);
+		Assert.assertEquals("Invalid Format Given", toastText);
 
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(toastLocator));
 
 		// Verifiy updated excel data showing in the web table
 
-		String priceColumn= driver.findElement(By.xpath("//div[text()='Price']")).getAttribute("data-column-id");
-		String actualPrice = driver.findElement(By.xpath("//div[text()='"+fruitName+"']/parent::div/parent::div/div[@id='cell-"+priceColumn+"-undefined']")).getText();
+		String priceColumn = driver.findElement(By.xpath("//div[text()='Price']")).getAttribute("data-column-id");
+		String actualPrice = driver.findElement(By.xpath("//div[text()='" + fruitName
+				+ "']/parent::div/parent::div/div[@id='cell-" + priceColumn + "-undefined']")).getText();
 		System.out.println(actualPrice);
-		Assert.assertEquals("345", actualPrice);
-		//Assert.assertEquals("350", actualPrice);
-	
+		Assert.assertEquals(updatedValue, actualPrice);
+		// Assert.assertEquals("350", actualPrice);
+
 		driver.close();
 
 	}
 
-	private static void updateCell(String fileName, int row, int col, String string) {
-		// TODO Auto-generated method stub
-		
-	}
+	private static boolean updateCell(String fileName, int row, int col, String updatedValue) throws IOException {
 
-	private static int getRowNumber(String fileName, String string) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	private static int getColumnNumber(String fileName, String string) {
 		ArrayList<String> a = new ArrayList<String>();
 
 		FileInputStream fis = new FileInputStream(fileName);
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
-				XSSFSheet sheet = workbook.getSheet("Sheet1");
-				// Identify Testcases coloum by scanning the entire 1st row
+		XSSFSheet sheet = workbook.getSheet("Sheet1");
 
-				java.util.Iterator<Row> rows = sheet.iterator();
-				Row firstrow = rows.next();
-				java.util.Iterator<Cell> ce = firstrow.cellIterator();
+		Row rowField = sheet.getRow(row - 1);
+		Cell cellField = rowField.getCell(col);
 
-				int k = 0;
-				int coloumn = 0;
-				while (ce.hasNext()) {
-					Cell value = ce.next();
+		cellField.setCellValue(updatedValue);
+		FileOutputStream fos = new FileOutputStream(fileName);
+		workbook.write(fos);
+		workbook.close();
+		fis.close();
+		return true;
 
-					if (value.getStringCellValue().equalsIgnoreCase("testdata")) {
-						coloumn = k;
-					}
-					k++;
-				}
-				System.out.println(coloumn);		return 0;
 	}
+
+	private static int getRowNumber(String fileName, String text) throws IOException {
+
+		ArrayList<String> a = new ArrayList<String>();
+
+		FileInputStream fis = new FileInputStream(fileName);
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet sheet = workbook.getSheet("Sheet1");
+		// Identify Testcases coloum by scanning the entire 1st row
+
+		Iterator<Row> rows = sheet.iterator(); // Sheet is collection of rows
+		int rowIndex = -1;
+		while (rows.hasNext()) {
+			Row row = rows.next();
+			Iterator<Cell> cells = row.cellIterator();
+			int k = 1;
+			
+
+			while (cells.hasNext()) {
+				Cell cell = cells.next();
+				if (cell.getCellType() == CellType.STRING && cell.getStringCellValue().equalsIgnoreCase(text))
+				{
+					rowIndex=k;
+				}
+			
+			}
+			k++;
+		}
+		return rowIndex;
+
+	}
+
+	private static int getColumnNumber(String fileName, String colName) throws IOException {
+		ArrayList<String> a = new ArrayList<String>();
+
+		FileInputStream fis = new FileInputStream(fileName);
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+
+		XSSFSheet sheet = workbook.getSheet("Sheet1");
+		// Identify Testcases coloum by scanning the entire 1st row
+
+		Iterator<Row> rows = sheet.iterator(); // Sheet is collection of rows
+		Row firstrow = rows.next();
+		Iterator<Cell> ce = firstrow.cellIterator();
+		// row is collection of cells
+
+		int k = 1;
+		int coloumn = 0;
+		while (ce.hasNext()) {
+			Cell value = ce.next();
+
+			if (value.getStringCellValue().equalsIgnoreCase(colName)) {
+				coloumn = k;
+			}
+			k++;
+		}
+		System.out.println(coloumn);
+		return coloumn;
+		
+		}
+	
 }

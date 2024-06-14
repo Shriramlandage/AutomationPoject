@@ -2,7 +2,7 @@ package testing;
 public class NetRunRateCalculator {
 
     public static void main(String[] args) {
-        // Example data
+        // Example data 
         int totalRunsScored = 55;
         int totalOversFaced = 8;
         int totalRunsConceded = 45;
@@ -13,7 +13,7 @@ public class NetRunRateCalculator {
 
         // Display the result
         System.out.println("Net Run Rate: " + netRunRate);
-    }
+    } 
 
     public static double calculateNRR(int totalRunsScored, int totalOversFaced,
                                       int totalRunsConceded, int totalOversBowled) {

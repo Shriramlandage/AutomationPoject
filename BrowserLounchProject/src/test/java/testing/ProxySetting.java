@@ -25,7 +25,7 @@ public class ProxySetting {
 		Map<String, Object> prefs = new HashMap<String, Object>();
 
 
-
+ 
 		prefs.put("download.default_directory", "/directory/path");
 
 

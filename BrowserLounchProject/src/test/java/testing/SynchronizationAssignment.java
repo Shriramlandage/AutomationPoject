@@ -11,11 +11,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class SynchronizationAssignment {
 
 	public static void main(String[] args) {
-		System.setProperty("webdriver.chrome.driver",
-				"C:\\Automation\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://rahulshettyacademy.com/loginpagePractise/");
@@ -42,7 +43,7 @@ public class SynchronizationAssignment {
 		List<WebElement> products = driver.findElements(By.cssSelector(".card-footer .btn-info"));
 
 		for (int i = 0; i < products.size(); i++)
-
+ 
 		{
 
 			products.get(i).click();
